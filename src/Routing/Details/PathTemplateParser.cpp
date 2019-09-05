@@ -16,6 +16,7 @@ PathTemplateParser::PathTemplateParser(std::string const &path)
 }
 
 void PathTemplateParser::parse(std::string const &path) {
+    ((void)(path));
     for (int i = 0; i < _tokenizer.numTokens(); i++) {
         std::string token = _tokenizer.getToken(i);
         if (token[0] == ':') {

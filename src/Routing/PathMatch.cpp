@@ -4,7 +4,7 @@
 namespace Routing {
 
 PathMatch::PathMatch(std::string path, Details::PathTemplate const &tpl)
-: _path(path), _pathTemplate(tpl), _tokenizer(path, '/') {
+: _path(path), _tokenizer(path, '/'), _pathTemplate(tpl) {
 
 }
 

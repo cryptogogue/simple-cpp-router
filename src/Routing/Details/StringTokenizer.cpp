@@ -14,7 +14,7 @@ void StringTokenizer::tokenize() {
     int startPos = _origin[0] == _delimeter ? 1 : 0;
     int tokenEndPos = startPos;
 
-    while (startPos <= _origin.length()) {
+    while (startPos <= (int)_origin.length()) {
         tokenEndPos = nextDelim(_origin, startPos);
         _tokens.push_back(TokenPos { startPos, tokenEndPos - startPos });
         startPos = tokenEndPos + 1;
@@ -27,7 +27,7 @@ void StringTokenizer::tokenize() {
 
 int StringTokenizer::nextDelim(std::string const &str, int startPos) {
     int res;
-    for (res = startPos; res < str.length() && str[res] != _delimeter; res++);
+    for (res = startPos; res < (int)str.length() && str[res] != _delimeter; res++);
     return res;
 }
 
@@ -40,7 +40,7 @@ std::vector<std::string> StringTokenizer::getAllTokens() const {
 }
 
 std::string StringTokenizer::getToken(int index) const {
-    if (index >= _tokens.size()) {
+    if (index >= (int)_tokens.size()) {
         throw OutOfRangeException(
             "StringTokenizer::getToken: Index " + std::to_string(index) +
             " was out of range (" + std::to_string(_tokens.size()) + ")");
@@ -50,7 +50,7 @@ std::string StringTokenizer::getToken(int index) const {
 }
 
 StringTokenizer::TokenPos StringTokenizer::getTokenPos(int index) const {
-    if (index >= _tokens.size()) {
+    if (index >= (int)_tokens.size()) {
         throw OutOfRangeException(
             "StringTokenizer::getTokenPos: Index " + std::to_string(index) +
             " was out of range (" + std::to_string(_tokens.size()) + ")");
