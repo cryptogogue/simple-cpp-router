@@ -18,6 +18,16 @@ std::string PathMatch::getVar(std::string const &name) const {
     return _tokenizer.getToken(pos);
 }
 
+std::string PathMatch::getVar(std::string const &name, std::string fallback) const {
+    if (!_pathTemplate.parser().hasDynVar(name)) return fallback;
+    int pos = _pathTemplate.parser().getDynVarPos(name);
+    return _tokenizer.getToken(pos);
+}
+
+bool PathMatch::hasVar(std::string const &name) const {
+    return _pathTemplate.parser().hasDynVar(name);
+}
+
 std::string PathMatch::pathTemplate() const {
     return _pathTemplate.templ();
 }

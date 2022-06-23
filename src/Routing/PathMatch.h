@@ -33,6 +33,25 @@ public:
     std::string getVar(std::string const &name) const;
 
     /**
+     * @brief Get dynamic variable with a fallback
+     * @param variable name
+     * @param variable fallback
+     * @returns variable
+     * @details example: for path template [/path/to/:var] and actual
+     * path [/path/to/123] result will be '123'
+     */
+    std::string getVar(std::string const &name, std::string fallback) const;
+
+    /**
+     * @brief Check to see if a variable exists
+     * @param variable name
+     * @returns variable
+     * @details example: for path template [/path/to/:var] and actual
+     * path [/path/to/123] result will be '123'
+     */
+    bool hasVar(std::string const &name) const;
+
+    /**
      * @brief Get dynamic variable
      * @param variable name
      * @returns variable
